@@ -1,0 +1,42 @@
+# GNSP Default Configuration
+
+project:
+  name: "GNSP"
+  version: "0.1.0"
+  seed: 42
+
+golden:
+  phi: 1.618033988749895
+  use_golden_weights: true
+  use_golden_decay: true
+  use_fibonacci_stdp: true
+
+snn:
+  n_input: 80
+  n_hidden: [64, 32]
+  n_output: 5
+  
+  neuron:
+    threshold: 1.618
+    reset: 0.618
+    leak: 0.382
+    refractory_period: 2
+  
+  topology:
+    type: "quasicrystal"
+    connection_distances: [1.0, 1.618, 2.618]
+
+training:
+  dataset: "nsl-kdd"
+  batch_size: 64
+  epochs: 100
+  learning_rate: 0.001
+  validation_split: 0.2
+
+detection:
+  ensemble_weights:
+    snn: 0.4
+    automata: 0.2
+    category: 0.2
+    tda: 0.2
+  threshold: 0.618

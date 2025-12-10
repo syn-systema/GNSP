@@ -1,0 +1,1 @@
+"""Clifford/geometric algebra module."""
